@@ -883,7 +883,16 @@ ul, li {
     transition: all 0.65s;
 }
 .faq__item.active .faq__content {
-    height: 80px;
+    height: 85px;
+}
+
+.faq__content a {
+    color: rgba(255, 255, 255, 0.6);
+    text-decoration: underline;
+}
+
+.faq__content a:hover {
+    text-decoration: none;
 }
 
 .faq__vector-one {
