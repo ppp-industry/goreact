@@ -71,6 +71,9 @@ function smoothScroll(e) {
     e.preventDefault();
     const href = this.getAttribute('href');
     const offsetTop = document.querySelector(href).offsetTop;
+    document.querySelector('body').style.overflow = 'initial';
+    burger.classList.remove('active');
+    header.classList.remove('open');
 
     scroll({
         top: offsetTop,
