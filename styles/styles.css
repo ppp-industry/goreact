@@ -931,6 +931,12 @@ ul, li {
     gap: 22px;
 }
 
+.socials__vector {
+    width: 44px;
+    min-width: 44px;
+    height: 44px;
+}
+
 .footer-copyright {
     text-align: center;
     padding: 11px 0;
@@ -1515,11 +1521,6 @@ ul, li {
         margin: 0 auto;
     }
 
-    .socials__vector {
-        width: 44px;
-        min-width: 44px;
-        height: 44px;
-    }
 }
 
 @media (max-width: 480px) {
