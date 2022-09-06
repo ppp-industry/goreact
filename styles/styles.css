@@ -1,3 +1,5 @@
+/* FONTS LOAD SECTION */
+
 /* USER VARIABLES SECTION */
 :root {
     --fontfamily: circe-gr, sans-serif;
@@ -5,7 +7,6 @@
     --transition: all 0.5s ease-in-out;
 }
 
-/* FONTS LOAD SECTION */
 @font-face {
     src: url('../fonts/Circe-Regular.woff2') format('woff2');
     font-family: 'circe-gr';
@@ -870,20 +871,19 @@ ul, li {
 }
 
 
+
 .faq__content {
     margin-left: 97px;
     max-width: 1020px;
     font-size: 24px;
     line-height: 1.5;
     color: rgba(255, 255, 255, 0.6);
-    max-height: 0;
+    height: 0;
     overflow: hidden;
-    transition: max-height 0.65s ease-in;
+    transition: all 0.65s;
 }
-
 .faq__item.active .faq__content {
-    max-height: 700px;
-    transition: max-height 0.65s ease-in;
+    height: 80px;
 }
 
 .faq__vector-one {

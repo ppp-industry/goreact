@@ -62,3 +62,18 @@ accordions.forEach( item => {
 
     })
 });
+
+const links = document.querySelectorAll('a[href*="#"]');
+
+links.forEach(link => link.addEventListener('click', smoothScroll));
+
+function smoothScroll(e) {
+    e.preventDefault();
+    const href = this.getAttribute('href');
+    const offsetTop = document.querySelector(href).offsetTop;
+
+    scroll({
+        top: offsetTop,
+        behavior: 'smooth'
+    });
+}
