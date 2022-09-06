@@ -2,7 +2,7 @@
 :root {
     --fontfamily: circe-gr, sans-serif;
     --accent: #24A1DF;
-    --transition: all 0.5s;
+    --transition: all 0.5s ease-in-out;
 }
 
 /* FONTS LOAD SECTION */
@@ -167,10 +167,84 @@ ul, li {
     justify-content: center;
 }
 
+.btn:hover {
+    background-color: transparent;
+    box-shadow: none;
+}
+
 .btn-transparent {
     background-color: transparent;
     font-weight: 400;
     box-shadow: none;
+}
+
+.btn-transparent:hover {
+    background-color: var(--accent);
+    box-shadow: 0 18px 17px rgba(36, 161, 223, 0.12);
+}
+
+.menu-btn {
+    width: 42px;
+    min-width: 42px;
+    height: 42px;
+    background-color: var(--accent);
+    border-radius: 50%;
+    position: relative;
+    display: none;
+}
+
+.menu-btn span,
+.menu-btn span::before,
+.menu-btn span::after {
+    position: absolute;
+    top: 50%;
+    left: 11px;
+    margin-top: -1px;
+    width: 21px;
+    min-width: 21px;
+    height: 2px;
+    background-color: #fff;
+}
+
+.menu-btn span::before,
+.menu-btn span::after {
+    content: '';
+    display: block;
+    transition: 0.2s;
+    left: 0;
+}
+
+.menu-btn span::before {
+    transform: translateY(-5px);
+}
+
+.menu-btn span::after {
+    transform: translateY(5px);
+}
+
+.menu-btn.active span {
+    height: 0;
+}
+
+.menu-btn.active span:before {
+    transform: rotate(45deg);
+}
+
+.menu-btn.active span:after {
+    transform: rotate(-45deg);
+}
+
+.overlay {
+    opacity: 0;
+    z-index: 40;
+    position: fixed;
+    top: 0;
+    right: 0;
+    left: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0.8);
+    transition: var(--transition);
+    pointer-events: none;
 }
 
 /* HEADER */
@@ -202,7 +276,7 @@ ul, li {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    gap: 15px;
+    gap: 30px;
 }
 
 .logo {
@@ -429,6 +503,7 @@ ul, li {
     padding: 24px 23px;
     max-width: 312px;
     width: 100%;
+    position: relative;
 }
 
 .how-it-work__icon {
@@ -450,6 +525,17 @@ ul, li {
 .how-it-work__btn {
     max-width: 331px;
     margin: 0 auto;
+}
+
+.how-it-work__counter {
+    position: absolute;
+    color: #1C1C1C;
+    font-weight: 500;
+    font-size: 48px;
+    line-height: 60px;
+    font-family: geometria-gr, sans-serif;
+    right: 15px;
+    top: 12px;
 }
 
 /* BENEFITS */
@@ -586,6 +672,10 @@ ul, li {
     display: flex;
     align-items: center;
     justify-content: center;
+}
+
+.benefits__title-mobile {
+    display: none;
 }
 
 .services__content {
@@ -788,11 +878,12 @@ ul, li {
     color: rgba(255, 255, 255, 0.6);
     max-height: 0;
     overflow: hidden;
-    transition: var(--transition);
+    transition: max-height 0.65s ease-in;
 }
 
 .faq__item.active .faq__content {
     max-height: 700px;
+    transition: max-height 0.65s ease-in;
 }
 
 .faq__vector-one {
@@ -822,6 +913,7 @@ ul, li {
 .footer > .container {
     padding: 57px 0;
     display: flex;
+    gap: 20px;
     align-items: center;
     justify-content: space-between;
 }
@@ -848,4 +940,792 @@ ul, li {
     font-size: 13px;
     line-height: 153.3%;
     border-top: 3px solid #1E303A;
+}
+
+/* ADAPTIVE */
+
+@media (max-width: 1600px) {
+    .container {
+        padding: 0 40px;
+    }
+
+    .footer > .container {
+        padding: 57px 40px;
+    }
+
+    .header-top > .container::before {
+        right: calc(100% + -203px);
+    }
+
+    .header::after {
+        right: -554px;
+    }
+
+    .benefits-next {
+        left: calc(100% + 10px);
+    }
+
+    .benefits-prev {
+        right: calc(100% + 10px);
+    }
+
+    .faq__vector-one {
+        left: 0;
+    }
+
+    .faq::after {
+        top: 0;
+    }
+
+    .faq__vector-two {
+        right: 164px;
+        top: 96px;
+    }
+}
+
+@media (max-width: 1440px) {
+    .header::after {
+        right: -168px;
+        bottom: -478px;
+        width: 800px;
+        height: 800px;
+    }
+
+    .header-top__custom-text {
+        font-size: 190px;
+        line-height: 175px;
+        left: 20px;
+        top: -25px;
+    }
+
+    .header-top__vector-one {
+        left: 30px;
+        top: 67px;
+    }
+
+    .header-top__vector-two {
+        left: 17px;
+        top: 258px;
+    }
+
+    .header-top h1 {
+        font-size: 100px;
+    }
+
+    .header-top p {
+        font-size: 28px;
+    }
+
+    .header-top__create-info {
+        font-size: 20px;
+    }
+
+    .title {
+        font-size: 45px;
+    }
+
+    .benefits-slider {
+        max-width: 1160px;
+        margin: 49px auto 0;
+    }
+
+    .faq__list {
+        max-width: 1000px;
+        margin: 68px auto 0;
+    }
+
+    .faq__title {
+        font-size: 29px;
+    }
+
+    .faq__item {
+        padding: 25px 36px;
+    }
+
+    .faq__icon {
+        width: 44px;
+        min-width: 44px;
+        height: 44px;
+    }
+
+    .faq__content {
+        margin-left: 85px;
+        font-size: 20px;
+    }
+
+    .benefits-next {
+        left: calc(100% - 28px);
+    }
+
+    .benefits-prev {
+        right: calc(100% - 28px);
+    }
+
+    .how-it-work__counter {
+        font-size: 37px;
+        right: 10px;
+        top: 10px;
+        line-height: 35px;
+    }
+
+}
+
+@media (max-width: 1200px) {
+
+    .mnu-list {
+        justify-content: space-around;
+    }
+
+    .header-top__custom-text {
+        font-size: 127px;
+        line-height: 145px;
+        left: 10px;
+        top: 44px;
+    }
+
+    .mnu-list__item a {
+        font-size: 14px;
+    }
+
+    .btn {
+        width: 100%;
+        height: 50px;
+    }
+
+    .header__btn-create {
+        max-width: 205px;
+    }
+
+    .header > .container {
+        gap: 30px;
+    }
+
+    .header-top__img {
+        width: 350px;
+        height: 290px;
+    }
+
+    .header-top h1 {
+        font-size: 85px;
+        margin-bottom: 30px;
+    }
+
+    .header-top p {
+        font-size: 25px;
+    }
+
+    .header-top__create-info {
+        font-size: 16px;
+        margin: 25px 0 35px;
+    }
+
+    .header-top__vector-three {
+        left: 0;
+        top: 0;
+    }
+
+    .header-top__vector-four {
+        width: 90px;
+        height: 92px;
+        right: 42px;
+        top: -138px;
+    }
+
+    .header-top__vector-six {
+        left: calc(100% + 69px);
+        bottom: -13px;
+    }
+
+    .title {
+        font-size: 38px;
+    }
+
+    .header::after {
+        right: -303px;
+    }
+
+    .how-it-work__counter {
+        font-size: 37px;
+        right: 10px;
+        top: 10px;
+        line-height: 35px;
+    }
+
+    .how-it-work__list {
+        flex-wrap: wrap;
+        justify-content: space-around;
+    }
+
+    .how-it-work__item {
+        max-width: initial;
+        width: calc(100% / 2 - 20px);
+    }
+
+    .benefits__content h3 {
+        display: none;
+    }
+
+    .benefits__title-mobile {
+        display: block;
+        font-size: 28px;
+    }
+
+    .benefits-slider .swiper-slide {
+        flex-direction: column;
+    }
+
+    .benefits__head {
+        display: flex;
+        gap: 20px;
+        align-items: center;
+    }
+
+    .benefits-slider {
+        max-width: 870px;
+    }
+
+    .footer__mnu-list {
+        flex-wrap: wrap;
+        gap: 10px;
+    }
+
+    .footer__mnu-list .mnu-list__item {
+        width: calc(100% / 2 - 5px);
+    }
+
+    .footer .mnu-list {
+
+        max-width: 305px;
+    }
+
+    .service__block--center {
+        margin: 0 15px;
+    }
+
+    .services__wrapper {
+        flex-wrap: wrap;
+    }
+
+    .service__block--left {
+        width: calc(100% / 2 - 10px);
+        order: 2;
+    }
+
+    .service__block--right {
+        width: calc(100% / 2 - 10px);
+        order: 3;
+    }
+
+    .service__block--center {
+        width: 100%;
+        order: 1;
+        margin: 0 0 40px;
+    }
+
+    .service__block--center::before, .service__block--center::after  {
+        left: 50%;
+        transform: translateX(-50%);
+    }
+
+    .services__wrapper {
+        margin: 50px 0 79px;
+        display: flex;
+        justify-content: space-between;
+    }
+
+    .services__content p {
+        font-size: 14px;
+    }
+
+    .services__content h4 {
+        font-size: 18px;
+    }
+
+    .services__item:not(:last-child) {
+        margin-bottom: 35px;
+    }
+
+}
+
+@media (max-width: 992px) {
+
+    .menu-btn {
+        display: block;
+        z-index: 70;
+    }
+
+    .header__mnu-list {
+        z-index: 50;
+        position: fixed;
+        right: 0;
+        top: 0;
+        bottom: 0;
+        flex-direction: column;
+        width: 320px;
+        justify-content: flex-start;
+        background: #1D3139;
+        padding-top: 120px;
+        transform: translateX(100%);
+        transition: var(--transition);
+    }
+
+    .header.open .header__mnu-list {
+        transform: translateX(0);
+    }
+
+    .header__mnu-list .mnu-list__item {
+        margin-bottom: 25px;
+    }
+
+    .header__mnu-list .mnu-list__item a {
+        font-size: 22px;
+    }
+
+    .header.open .overlay {
+        opacity: 1;
+        pointer-events: initial;
+    }
+
+    .header-top__img {
+        width: 300px;
+        height: 248px;
+    }
+
+    .header-top {
+        height: initial;
+    }
+
+    .header-top__custom-text {
+        top: -15px;
+    }
+
+    .header-top__img-wrapper {
+        margin-left: 0;
+    }
+
+    .benefits, .service, .faq {
+        padding-top: 80px;
+    }
+
+    .faq__vector-one, .faq__vector-two, .faq::after {
+        display: none;
+    }
+
+    .header-top__img {
+        width: 267px;
+        height: 221px;
+    }
+
+    .header::after {
+        right: -136px;
+        bottom: -328px;
+        width: 500px;
+        height: 500px;
+    }
+
+    .footer > .container {
+        flex-wrap: wrap;
+    }
+
+    .footer .mnu-list {
+        max-width: initial;
+        width: 70%;
+    }
+
+    .footer__logo {
+        width: 27%;
+    }
+
+    .footer__mnu-list .mnu-list__item {
+        width: initial;
+    }
+
+}
+
+@media (max-width: 768px) {
+
+    .title {
+        line-height: 45px;
+    }
+
+    .container {
+        padding: 0 20px;
+    }
+
+    .logo {
+        font-size: 36px;
+    }
+
+    .header__btn-create {
+        display: none;
+    }
+
+    .header-top > .container {
+        flex-direction: column-reverse;
+        justify-content: center;
+        text-align: center;
+    }
+
+    .header {
+        padding: 28px 0 0;
+    }
+
+    .header-top {
+        padding: 95px 0 0;
+    }
+
+    .header-top__btn-create {
+        margin: 0 auto;
+    }
+
+    .header-top h1 {
+        font-weight: 700;
+        font-size: 52px;
+        line-height: 65px;
+        margin: 58px 0 22px;
+    }
+
+    .header-top__create-info {
+        margin: 12px 0 20px;
+        font-size: 14px;
+    }
+
+    .header-top p {
+        font-size: 16px;
+    }
+
+    .header-top__custom-text {
+        top: 316px;
+        left: 61px;
+    }
+
+    .header-top__vector-one {
+        left: 83px;
+        top: 150px;
+        width: 25px;
+        height: 25px;
+    }
+
+    .header-top__vector-two {
+        display: none;
+    }
+
+    .header-top__vector-three {
+        left: -51px;
+        top: -38px;
+        width: 11px;
+        height: 12px;
+    }
+
+    .header-top__vector-four {
+        width: 50px;
+        height: 51px;
+        right: 128px;
+        top: -20px;
+    }
+
+    .header-top__vector-five {
+        width: 35px;
+        height: 35px;
+        left: -158px;
+        top: calc(100% + 60px);
+    }
+
+    .how-it-work {
+        padding: 55px 0 0;
+    }
+
+    .benefits {
+        padding: 58px 0 0;
+    }
+
+    .benefits-slider {
+        margin-top: 32px;
+    }
+
+    .benefits-prev {
+        display: none;
+    }
+
+    .benefits-next {
+        right: 31.7%;
+        left: initial;
+        width: 43px;
+        height: 43px;
+    }
+
+    .benefits-next svg {
+        width: 11px;
+        height: 16px;
+    }
+
+    .benefits-slider .swiper-slide {
+        padding: 16px 18px;
+    }
+
+    .service {
+        padding: 55px 0 0;
+    }
+
+    .service__block--left, .service__block--right {
+        width: 100%;
+    }
+
+    .services__item:not(:last-child), .services__item {
+        margin-bottom: 24px;
+    }
+
+    .faq__title {
+        font-size: 21px;
+    }
+
+    .faq__content {
+        margin-left: 85px;
+        font-size: 16px;
+    }
+
+    .footer__mnu-list .mnu-list__item {
+        width: calc(100% / 2 - 5px);
+    }
+
+}
+
+@media (max-width: 576px) {
+
+    .how-it-work__item {
+        width: 100%;
+    }
+
+    .footer__logo {
+        width: 100%;
+        text-align: center;
+    }
+
+    .footer .mnu-list {
+        width: 100%;
+        text-align: center;
+    }
+
+    .footer__socials {
+        width: 100%;
+        justify-content: center;
+    }
+
+    .footer__btn-create {
+        margin: 0 auto;
+    }
+}
+
+@media (max-width: 480px) {
+
+    .title {
+        line-height: 30px;
+        font-size: 24px;
+    }
+
+    .header::after {
+        right: -113px;
+        bottom: initial;
+        top: -117px;
+        width: 335px;
+        height: 335px;
+        border: 13px solid rgba(255, 255, 255, 0.13);
+    }
+
+    .header-top__img {
+        width: 187px;
+        height: 155px;
+    }
+
+    .header-top__vector-one {
+        display: none;
+    }
+
+    .header-top__vector-three {
+        left: 21px;
+    }
+
+    .header-top__vector-four {
+        top: -78px;
+        right: 51px;
+    }
+
+    .header-top__custom-text {
+        font-size: 128px;
+        line-height: 131px;
+        left: 0;
+        top: 171px;
+    }
+
+    .header-top__create-info {
+        line-height: 21px;
+        max-width: 217px;
+        margin: 12px auto 20px;
+    }
+
+    .btn {
+        height: 55px;
+    }
+
+    .header-top__vector-five {
+        display: none;
+    }
+
+    .header-top__vector-six {
+        left: initial;
+        right: -37px;
+        bottom: 27px;
+        width: 25px;
+        height: 26px;
+    }
+
+    .how-it-work__icon {
+        width: 69px;
+        height: 69px;
+    }
+
+    .how-it-work__icon svg {
+        width: 30px;
+    }
+
+    .how-it-work__item {
+        padding: 24px 16px;
+    }
+
+    .how-it-work__item p {
+        font-size: 14px;
+    }
+
+    .how-it-work__counter {
+        right: 17px;
+        top: 12px;
+        font-weight: 500;
+        font-size: 48px;
+        line-height: 60px;
+    }
+
+    .how-it-work__list {
+        margin: 24px 0 40px;
+        display: flex;
+        gap: 10px;
+    }
+
+    .benefits__icon {
+        width: 73px;
+        min-width: 73px;
+        height: 73px;
+    }
+
+    .benefits__head {
+        gap: 11px;
+    }
+
+    .benefits__icon svg {
+        width: 30px;
+    }
+
+    .benefits__title-mobile {
+        font-size: 18px;
+    }
+
+    .benefits__content p {
+        font-size: 14px;
+    }
+
+    .benefits-next {
+        right: 4px;
+    }
+
+    .service__img {
+        width: 140px;
+        height: 234px;
+    }
+
+    .service__block--center::before {
+        width: 193px;
+        height: 193px;
+    }
+
+    .service__block--center::after {
+        width: 170px;
+        height: 170px;
+        bottom: 44px;
+    }
+
+    .services__wrapper {
+        margin: 36px 0;
+    }
+
+    .service__icon {
+        width: 65px;
+        min-width: 65px;
+        height: 65px;
+    }
+
+    .service__icon svg {
+        width: 28px;
+    }
+
+    .services__item {
+        gap: 15px;
+    }
+
+    .service::after, .service__vector-one, .faq::before {
+        display: none;
+    }
+
+    .faq {
+        padding: 40px 0 0;
+    }
+
+    .faq__list {
+        margin: 24px 0 0;
+    }
+
+    .faq__item {
+        padding: 19px 6px 19px 21px;
+    }
+
+    .faq__head {
+        gap: 23px;
+    }
+
+    .faq__title {
+        font-weight: 400;
+        font-size: 14px;
+        line-height: 153.3%;
+    }
+
+    .faq__icon {
+        width: 35px;
+        min-width: 35px;
+        height: 35px;
+    }
+
+    .faq__content {
+        margin-left: 58px;
+        font-size: 14px;
+    }
+
+    .footer__mnu-list .mnu-list__item {
+        width: 100%;
+    }
+
+    .footer > .container {
+        gap: 0;
+        padding: 41px 0 9px;
+    }
+
+    .footer__logo {
+        margin-bottom: 31px;
+    }
+
+    .footer__mnu-list {
+        margin-bottom: 31px;
+    }
+
+    .footer__socials {
+        order: 1;
+        margin-top: 19px;
+    }
 }
