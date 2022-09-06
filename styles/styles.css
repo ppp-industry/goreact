@@ -1514,6 +1514,12 @@ ul, li {
     .footer__btn-create {
         margin: 0 auto;
     }
+
+    .socials__vector {
+        width: 44px;
+        min-width: 44px;
+        height: 44px;
+    }
 }
 
 @media (max-width: 480px) {
