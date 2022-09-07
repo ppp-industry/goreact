@@ -52,15 +52,25 @@ const swiperBenefits = new Swiper ('.benefits-slider', {
     }
 })
 
-const accordions = document.querySelectorAll('.faq__item');
+const
+    accordions = document.querySelectorAll('.faq__item'),
+    accordionsHeight = [];
 
-accordions.forEach( item => {
+accordions.forEach( (item, index) => {
+    let content = item.querySelector('.faq__content');
+    accordionsHeight.push(content.clientHeight);
+    content.style.height = '0';
 
     item.addEventListener('click', function () {
+        if (this.classList.contains('active')) {
+            this.classList.remove('active');
+            content.style.height = '0';
+        } else {
+            this.classList.add('active');
+            content.style.height = accordionsHeight[index] + 'px';
+        }
 
-        this.classList.toggle('active');
-
-    })
+    });
 });
 
 const links = document.querySelectorAll('a[href*="#"]');
